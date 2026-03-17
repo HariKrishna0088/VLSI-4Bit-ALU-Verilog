@@ -1,0 +1,27 @@
+# Simulation outputs
+*.vcd
+*.vvp
+*.out
+*.log
+
+# ModelSim / QuestaSim
+work/
+transcript
+vsim.wlf
+*.mpf
+
+# Xilinx Vivado
+*.jou
+*.xpr
+*.runs/
+*.cache/
+*.hw/
+*.ip_user_files/
+
+# Build artifacts
+*.o
+*.d
+
+# OS
+.DS_Store
+Thumbs.db
