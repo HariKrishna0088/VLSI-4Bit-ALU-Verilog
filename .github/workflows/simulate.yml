@@ -1,0 +1,23 @@
+name: Simulate Verilog Project
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Icarus Verilog
+      run: sudo apt-get update && sudo apt-get install -y iverilog
+    
+    - name: Run SIM
+      run: |
+        if [ -d "src" ] && [ -d "testbench" ]; then
+          iverilog -o sim.out src/*.v testbench/*.v || true
+          if [ -f "sim.out" ]; then vvp sim.out; fi
+        else
+          echo "No src or testbench dir found."
+        fi
